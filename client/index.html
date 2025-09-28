@@ -10,53 +10,79 @@
   <header>
     <h1>Órdenes de Comida</h1>
     <nav>
-      <button id="tabRegister">Registro</button>
-      <button id="tabLogin">Login</button>
-      <button id="tabPedidos" class="hidden">Mis Pedidos</button>
+      <button id="tabRegister" title="Crear cuenta">Registro</button>
+      <button id="tabLogin" title="Iniciar sesión">Login</button>
+      <button id="tabPedidos" class="hidden" title="Ver y crear pedidos">Mis Pedidos</button>
     </nav>
   </header>
 
   <main>
-    <section id="registerView" class="card">
-      <h2>Registrar Cliente</h2>
-      <form id="registerForm">
-        <input type="text" id="rNombre" placeholder="Nombre" required />
-        <input type="email" id="rEmail" placeholder="Email" required />
-        <input type="text" id="rTelefono" placeholder="Teléfono" required />
-        <button>Crear cuenta</button>
+    <!-- ============ Registrar ============ -->
+    <section id="registerView" class="card" aria-labelledby="registerTitle">
+      <h2 id="registerTitle">Registrar Cliente</h2>
+      <form id="registerForm" autocomplete="off">
+        <div class="group">
+          <label for="rNombre">Nombre</label>
+          <input type="text" id="rNombre" placeholder="Nombre" required />
+        </div>
+        <div class="group">
+          <label for="rEmail">Email</label>
+          <input type="email" id="rEmail" placeholder="correo@ejemplo.com" required />
+        </div>
+        <div class="group">
+          <label for="rTelefono">Teléfono</label>
+          <input type="text" id="rTelefono" placeholder="Teléfono" required />
+        </div>
+        <button type="submit">Crear cuenta</button>
       </form>
-      <p class="msg" id="rMsg"></p>
+      <p class="msg" id="rMsg" role="status" aria-live="polite"></p>
     </section>
 
-    <section id="loginView" class="card hidden">
-      <h2>Login</h2>
-      <form id="loginForm">
-        <input type="email" id="lEmail" placeholder="Email" required />
-        <input type="text" id="lTelefono" placeholder="Teléfono" required />
-        <button>Entrar</button>
+    <!-- ============ Login ============ -->
+    <section id="loginView" class="card hidden" aria-labelledby="loginTitle">
+      <h2 id="loginTitle">Login</h2>
+      <form id="loginForm" autocomplete="off">
+        <div class="group">
+          <label for="lEmail">Email</label>
+          <input type="email" id="lEmail" placeholder="correo@ejemplo.com" required />
+        </div>
+        <div class="group">
+          <label for="lTelefono">Teléfono</label>
+          <input type="text" id="lTelefono" placeholder="Teléfono" required />
+        </div>
+        <button type="submit">Entrar</button>
       </form>
-      <p class="msg" id="lMsg"></p>
+      <p class="msg" id="lMsg" role="status" aria-live="polite"></p>
     </section>
 
-    <section id="pedidosView" class="card hidden">
-      <h2>Mis Pedidos</h2>
+    <!-- ============ Pedidos ============ -->
+    <section id="pedidosView" class="card hidden" aria-labelledby="ordersTitle">
+      <h2 id="ordersTitle">Mis Pedidos</h2>
+
       <div class="userRow">
-        <span id="userInfo"></span>
-        <button id="logoutBtn">Salir</button>
+        <span id="userInfo" class="muted"></span>
+        <button id="logoutBtn" title="Cerrar sesión">Salir</button>
       </div>
-      <form id="pedidoForm">
-        <input type="text" id="pPlatillo" placeholder="Platillo" required />
-        <input type="text" id="pNotas" placeholder="Notas (opcional)" />
-        <button>Crear Pedido</button>
+
+      <form id="pedidoForm" autocomplete="off">
+        <div class="group">
+          <label for="pPlatillo">Platillo</label>
+          <input type="text" id="pPlatillo" placeholder="Ej. Pizza, Hamburguesa" required />
+        </div>
+        <div class="group">
+          <label for="pNotas">Notas (opcional)</label>
+          <input type="text" id="pNotas" placeholder="Sin cebolla, extra queso..." />
+        </div>
+        <button type="submit">Crear Pedido</button>
       </form>
 
-      <div id="orders"></div>
-      <p class="msg" id="pMsg"></p>
+      <div id="orders" aria-live="polite" aria-busy="false"></div>
+      <p class="msg" id="pMsg" role="status" aria-live="polite"></p>
     </section>
   </main>
 
   <footer>
-    <small>[Parcial 2] Desarrollo Web </small>
+    <small>[Parcial 2] Desarrollo Web</small>
   </footer>
 
   <script src="./app.js"></script>

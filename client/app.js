@@ -1,6 +1,7 @@
-
+// ===== Config API =====
 function getApiBase() {
-  return localStorage.getItem('apiBase') || 'http://localhost:4000';
+  const url = localStorage.getItem('apiBase') || 'https://restaurante-parcial2.onrender.com';
+  return url.replace(/\/+$/, ''); // sin slash final
 }
 function setApiBase(url) {
   if (url && typeof url === 'string') {
@@ -9,7 +10,7 @@ function setApiBase(url) {
 }
 const API_BASE = getApiBase();
 
-
+// ===== Estado simple =====
 let me = JSON.parse(localStorage.getItem('me') || 'null');
 
 // ===== Tabs / Vistas =====
@@ -40,15 +41,13 @@ async function fetchJSON(url, options = {}) {
   try {
     const res = await fetch(url, options);
     let data = null;
-    // intenta parsear JSON incluso si res.ok es false
-    try { data = await res.json(); } catch { /* puede no ser json */ }
+    try { data = await res.json(); } catch { /* puede no ser JSON */ }
     if (!res.ok) {
       const msg = (data && (data.error || data.message)) || `HTTP ${res.status}`;
       throw new Error(msg);
     }
     return data;
   } catch (err) {
-    // Mensaje genérico si no hay red / CORS
     if (err.name === 'TypeError' && /fetch/i.test(err.message)) {
       throw new Error('No se pudo conectar con la API (verifica API_BASE y CORS)');
     }
@@ -171,7 +170,7 @@ pForm.onsubmit = async (e) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
-    pMsg.textContent = 'Pedido creado ✔';
+    pMsg.textContent = 'Pedido creado ';
     pForm.reset();
     loadOrders();
   } catch (err) {
@@ -210,8 +209,10 @@ function renderOrders(list) {
         <small>${escapeHtml(o.notas || '')}</small>
       </div>
       <div>
-        <span class="state">${escapeHtml(o.estado)}</span>
-        ${stateButtons(o).join('')}
+        <span class="state" data-st="${escapeHtml(o.estado)}">${escapeHtml(o.estado)}</span>
+        <div class="actions">
+          ${stateButtons(o).join('')}
+        </div>
       </div>`;
     ordersDiv.appendChild(el);
 
