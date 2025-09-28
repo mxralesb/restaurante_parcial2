@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Órdenes – Examen</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Órdenes de Comida</h1>
+    <nav>
+      <button id="tabRegister">Registro</button>
+      <button id="tabLogin">Login</button>
+      <button id="tabPedidos" class="hidden">Mis Pedidos</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="registerView" class="card">
+      <h2>Registrar Cliente</h2>
+      <form id="registerForm">
+        <input type="text" id="rNombre" placeholder="Nombre" required />
+        <input type="email" id="rEmail" placeholder="Email" required />
+        <input type="text" id="rTelefono" placeholder="Teléfono" required />
+        <button>Crear cuenta</button>
+      </form>
+      <p class="msg" id="rMsg"></p>
+    </section>
+
+    <section id="loginView" class="card hidden">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input type="email" id="lEmail" placeholder="Email" required />
+        <input type="text" id="lTelefono" placeholder="Teléfono" required />
+        <button>Entrar</button>
+      </form>
+      <p class="msg" id="lMsg"></p>
+    </section>
+
+    <section id="pedidosView" class="card hidden">
+      <h2>Mis Pedidos</h2>
+      <div class="userRow">
+        <span id="userInfo"></span>
+        <button id="logoutBtn">Salir</button>
+      </div>
+      <form id="pedidoForm">
+        <input type="text" id="pPlatillo" placeholder="Platillo" required />
+        <input type="text" id="pNotas" placeholder="Notas (opcional)" />
+        <button>Crear Pedido</button>
+      </form>
+
+      <div id="orders"></div>
+      <p class="msg" id="pMsg"></p>
+    </section>
+  </main>
+
+  <footer>
+    <small>[Parcial 2] Desarrollo Web </small>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+:root { font-family: system-ui, Arial; }
+body { margin: 0; background: #0b1020; color: #e8ecff; }
+header { padding: 16px; background: #111736; display: flex; align-items: center; justify-content: space-between; }
+h1 { margin: 0; font-size: 20px; }
+nav button { margin-left: 8px; }
+main { max-width: 900px; margin: 24px auto; padding: 0 16px; }
+.card { background: #141a3a; border: 1px solid #2a356f; border-radius: 14px; padding: 16px; box-shadow: 0 10px 20px rgba(0,0,0,.25); }
+.hidden { display: none; }
+form { display: grid; gap: 8px; margin-top: 8px; }
+input, button { padding: 10px 12px; border-radius: 10px; border: 1px solid #2a356f; background: #0d1330; color: #e8ecff; }
+button { cursor: pointer; }
+.msg { min-height: 20px; color: #9ad3ff; }
+.order { display: flex; align-items: center; justify-content: space-between; padding: 10px; border: 1px solid #2a356f; border-radius: 10px; margin-top: 8px; }
+.order small { opacity: .8; }
+.state { padding: 2px 8px; border-radius: 999px; background: #2a356f; margin-left: 8px; }
+.userRow { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+footer { text-align: center; padding: 24px; opacity: .7; }
